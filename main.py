@@ -1,16 +1,12 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from hexagonalPosition import HexagonalPosition
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+hex_pos_1 = HexagonalPosition(0, 2, 0)
+hex_pos_2 = HexagonalPosition(-2, 0, -2)
+
+print("First point position {}".format(hex_pos_1.to_cartesian_position()))
+print("Second point position {}".format(hex_pos_2.to_cartesian_position()))
+
+print("Are positions equal: {}".format(hex_pos_1 == hex_pos_2))
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
