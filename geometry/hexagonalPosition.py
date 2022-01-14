@@ -9,11 +9,13 @@ class HexagonalPosition:
         return [x, y]
 
     def __init__(self, u, v, w):
-        self.u = u
-        self.v = v
-        self.w = w
+        (self.u, self.v, self.w) = (u, v, w)
 
     def __eq__(self, other):
         if not isinstance(other, HexagonalPosition):
             return NotImplemented
         return self.u - other.u == self.v - other.v == self.w - other.w
+
+    def __str__(self):
+        return '[u = {0}, v = {1}, w = {2}]'.format(self.u, self.v, self.w)
+

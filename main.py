@@ -1,3 +1,6 @@
-from map.tileMap import prepare_hexagonal_net
+from map.hexagonalMap import HexagonalMap
 
-print(len(prepare_hexagonal_net(3)))
+hex_map = HexagonalMap(3)
+print(hex_map)
+
+
