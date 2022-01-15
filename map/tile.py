@@ -7,12 +7,12 @@ class Tile:
 
     def get_vertexes_positions(self):
         x, y = self.position.to_cartesian_position()
-        a = (x + 0.5, y + math.sqrt(3) * 0.5)
-        b = (x - 0.5, y + math.sqrt(3) * 0.5)
-        c = (x - 1, y)
-        d = (x - 0.5, y - math.sqrt(3) * 0.5)
-        e = (x + 0.5, y - math.sqrt(3) * 0.5)
-        f = (x + 1, y)
+        a = (x + 0.25, y + math.sqrt(3) * 0.25)
+        b = (x - 0.25, y + math.sqrt(3) * 0.25)
+        c = (x - 0.5, y)
+        d = (x - 0.25, y - math.sqrt(3) * 0.25)
+        e = (x + 0.25, y - math.sqrt(3) * 0.25)
+        f = (x + 0.5, y)
         return [a, b, c, d, e, f]
 
     def __init__(self, position):
