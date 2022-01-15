@@ -17,5 +17,5 @@ class HexagonalPosition:
         return self.u - other.u == self.v - other.v == self.w - other.w
 
     def __str__(self):
-        return '[u = {0}, v = {1}, w = {2}]'.format(self.u, self.v, self.w)
+        return '(u, v, w) = ({0}, {1}, {2})'.format(self.u, self.v, self.w)
 

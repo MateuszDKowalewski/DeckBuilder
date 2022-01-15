@@ -7,11 +7,11 @@ class HexagonalMap:
     def __init__(self, side_length):
         self.tiles = []
         (u, v, w) = (0, 0, 0)
-        step = 0
         self.tiles.append(Tile(HexagonalPosition(0, 0, 0)))
-        for i in range(0, side_length):
+        for i in range(1, side_length):
+            u += 1
             for j in range(0, 6):
-                for k in range(0, step):
+                for k in range(0, i):
                     position = (HexagonalPosition(u, v, w))
                     self.tiles.append(Tile(position))
                     new_positon = {
@@ -23,7 +23,6 @@ class HexagonalMap:
                         5: (u, v, w - 1)
                     }
                     (u, v, w) = new_positon.get(j)
-            step += 1
 
     def __str__(self):
         response = '[\n\ttiles = {\n'
