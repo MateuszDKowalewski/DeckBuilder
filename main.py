@@ -14,6 +14,7 @@ def main():
     while True:
         for event in pygame.event.get():
             handle_quit_event(event)
+            handle_mouse_click_event(event)
 
         draw(tile_map)
 
@@ -40,6 +41,19 @@ def game_to_screen_coordinates(points):
         y = - y * SCALE + Y_OFFSET
         new_points.append((x, y))
     return new_points
+
+
+def screen_to_game_coordinates(screen_x, screen_y):
+    world_x = (screen_x - X_OFFSET) / SCALE
+    world_y = - (screen_y - Y_OFFSET) / SCALE
+    return world_x, world_y
+
+
+def handle_mouse_click_event(event):
+    if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
+        print('Mouse button released')
+        # print(event.pos[1])
+        print(screen_to_game_coordinates(event.pos[0], event.pos[1]))
 
 
 def handle_quit_event(event):
