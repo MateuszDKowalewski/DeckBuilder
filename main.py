@@ -23,30 +23,24 @@ def main():
         WIN.fill((0, 0, 0))
         for tile in tile_map.tiles:
             draw_tile(tile)
-        for tile in tile_map.tiles:
-            draw_tile_outline(tile)
         pygame.display.flip()
 
 
 def draw_tile(tile):
     points = tile.get_vertexes_positions()
-    new_points = []
-    for point in points:
-        (x, y) = point
-        x = x * SCALE + X_OFFSET
-        y = y * SCALE + Y_OFFSET
-        new_points.append((x, y))
+    new_points = game_to_screen_coordinates(points)
     pygame.draw.polygon(WIN, (255, 255, 255), new_points)
+    pygame.draw.lines(WIN, (0, 0, 0), True, new_points, 3)
 
-def draw_tile_outline(tile):
-    points = tile.get_vertexes_positions()
+
+def game_to_screen_coordinates(points):
     new_points = []
     for point in points:
         (x, y) = point
         x = x * SCALE + X_OFFSET
         y = y * SCALE + Y_OFFSET
         new_points.append((x, y))
-    pygame.draw.lines(WIN, (0, 0, 0), True, new_points, 3)
+    return new_points
 
 
 def handle_quit_event(event):
