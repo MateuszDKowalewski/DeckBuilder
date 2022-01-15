@@ -38,7 +38,7 @@ def game_to_screen_coordinates(points):
     for point in points:
         (x, y) = point
         x = x * SCALE + X_OFFSET
-        y = y * SCALE + Y_OFFSET
+        y = - y * SCALE + Y_OFFSET
         new_points.append((x, y))
     return new_points
 
