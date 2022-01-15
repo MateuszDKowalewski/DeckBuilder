@@ -18,4 +18,3 @@ class HexagonalPosition:
 
     def __str__(self):
         return '(u, v, w) = ({0}, {1}, {2})'.format(self.u, self.v, self.w)
-

@@ -1,0 +1,7 @@
+WINDOW_NAME = "Deck builder!"
+
+RESOLUTION = (900, 500)
+
+X_OFFSET = 450
+Y_OFFSET = 250
+SCALE = 70
