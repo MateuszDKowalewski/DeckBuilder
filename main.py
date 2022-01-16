@@ -33,8 +33,10 @@ class Game:
 
     def handle_mouse_click_event(self, event):
         if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
-            print('Mouse button released')
-            print(screen_to_game_coordinates(event.pos[0], event.pos[1]))
+            for tile in self.tile_map.tiles:
+                pos = screen_to_game_coordinates(event.pos[0], event.pos[1])
+                if tile.contains(pos[0], pos[1]):
+                    print(tile)
 
     def handle_quit_event(self, event):
         if event.type == pygame.QUIT:

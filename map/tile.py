@@ -1,6 +1,9 @@
 import math
 import pygame
 
+from shapely.geometry import Point
+from shapely.geometry.polygon import Polygon
+
 from gameScreenCordinateMappers import game_to_screen_coordinates
 from geometry.hexagonalPosition import HexagonalPosition
 
@@ -12,6 +15,11 @@ class Tile:
         new_points = game_to_screen_coordinates(points)
         pygame.draw.polygon(screen, (255, 255, 255), new_points)
         pygame.draw.lines(screen, (0, 0, 0), True, new_points, 3)
+
+    def contains(self, x, y):
+        point = Point(x, y)
+        polygon = Polygon(self.get_vertexes_positions())
+        return polygon.contains(point)
 
     def get_vertexes_positions(self):
         x, y = self.position.to_cartesian_position()
