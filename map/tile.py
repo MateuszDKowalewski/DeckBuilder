@@ -1,9 +1,17 @@
 import math
+import pygame
 
+from gameScreenCordinateMappers import game_to_screen_coordinates
 from geometry.hexagonalPosition import HexagonalPosition
 
 
 class Tile:
+
+    def draw(self, screen):
+        points = self.get_vertexes_positions()
+        new_points = game_to_screen_coordinates(points)
+        pygame.draw.polygon(screen, (255, 255, 255), new_points)
+        pygame.draw.lines(screen, (0, 0, 0), True, new_points, 3)
 
     def get_vertexes_positions(self):
         x, y = self.position.to_cartesian_position()
