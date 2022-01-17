@@ -24,6 +24,9 @@ class Tile(GameObject):
 
     def get_vertexes_positions(self):
         x, y = self.position.to_cartesian_position()
+        map_x, map_y = self.map.position.to_cartesian_position()
+        x += map_x
+        y += map_y
         a = (x + 0.25, y + math.sqrt(3) * 0.25)
         b = (x - 0.25, y + math.sqrt(3) * 0.25)
         c = (x - 0.5, y)
@@ -31,6 +34,10 @@ class Tile(GameObject):
         e = (x + 0.25, y - math.sqrt(3) * 0.25)
         f = (x + 0.5, y)
         return [a, b, c, d, e, f]
+
+    def __init__(self, position, tiles_map):
+        super().__init__(position)
+        self.map = tiles_map
 
     def __eq__(self, other):
         if not isinstance(other, Tile):

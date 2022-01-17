@@ -16,7 +16,7 @@ class Game:
         pygame.display.set_caption(WINDOW_NAME)
 
         self.player = Player(HexagonalPosition(0, 0, 0))
-        self.tile_map = HexagonalMap(4)
+        self.tile_map = HexagonalMap(HexagonalPosition(0, 0, 0), 4)
 
         while True:
             for event in pygame.event.get():
@@ -30,8 +30,7 @@ class Game:
 
     def draw(self):
         self.screen.fill(BLACK)
-        for tile in self.tile_map.tiles:
-            tile.draw(self.screen)
+        self.tile_map.draw(self.screen)
         self.player.draw(self.screen)
         pygame.display.flip()
 
