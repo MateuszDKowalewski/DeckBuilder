@@ -4,16 +4,17 @@ import pygame
 from shapely.geometry import Point
 from shapely.geometry.polygon import Polygon
 
+from gameObject import GameObject
 from gameScreenCordinateMappers import game_to_screen_coordinates
-from geometry.hexagonalPosition import HexagonalPosition
+from gemeConsts import WHITE
 
 
-class Tile:
+class Tile(GameObject):
 
     def draw(self, screen):
         points = self.get_vertexes_positions()
         new_points = game_to_screen_coordinates(points)
-        pygame.draw.polygon(screen, (255, 255, 255), new_points)
+        pygame.draw.polygon(screen, WHITE, new_points)
         pygame.draw.lines(screen, (0, 0, 0), True, new_points, 3)
 
     def contains(self, x, y):
@@ -30,11 +31,6 @@ class Tile:
         e = (x + 0.25, y - math.sqrt(3) * 0.25)
         f = (x + 0.5, y)
         return [a, b, c, d, e, f]
-
-    def __init__(self, position):
-        if not isinstance(position, HexagonalPosition):
-            raise TypeError("Only HexagonalPosition are allowed")
-        self.position = position
 
     def __eq__(self, other):
         if not isinstance(other, Tile):

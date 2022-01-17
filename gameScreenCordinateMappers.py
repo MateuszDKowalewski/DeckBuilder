@@ -4,7 +4,7 @@ from gemeConsts import SCALE, X_OFFSET, Y_OFFSET
 def game_to_screen_coordinates(points):
     new_points = []
     for point in points:
-        new_points.append((game_to_screen_coordinate(point[0], point[1])))
+        new_points.append(game_to_screen_coordinate(point[0], point[1]))
     return new_points
 
 

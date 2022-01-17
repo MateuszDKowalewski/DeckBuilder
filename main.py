@@ -2,8 +2,10 @@ import sys
 import pygame
 
 from gameScreenCordinateMappers import screen_to_game_coordinates
-from gemeConsts import RESOLUTION, WINDOW_NAME
+from gemeConsts import RESOLUTION, WINDOW_NAME, BLACK
+from geometry.hexagonalPosition import HexagonalPosition
 from map.hexagonalMap import HexagonalMap
+from player.player import Player
 
 
 class Game:
@@ -13,6 +15,7 @@ class Game:
         self.clock = pygame.time.Clock()
         pygame.display.set_caption(WINDOW_NAME)
 
+        self.player = Player(HexagonalPosition(0, 0, 0))
         self.tile_map = HexagonalMap(4)
 
         while True:
@@ -26,9 +29,10 @@ class Game:
         pass
 
     def draw(self):
-        self.screen.fill((0, 0, 0))
+        self.screen.fill(BLACK)
         for tile in self.tile_map.tiles:
             tile.draw(self.screen)
+        self.player.draw(self.screen)
         pygame.display.flip()
 
     def handle_mouse_click_event(self, event):
